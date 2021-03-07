@@ -2,7 +2,7 @@
 
 A simple extension to visualize the dependencies of your .NET Core solution or project.
 
-[VisualDepend dependency graph](images/visualdepend-graph.png)
+![VisualDepend dependency graph](images/visualdepend-graph.png)
 
 
 ## How to use?
