@@ -1,6 +1,7 @@
 {
   "name": "visualdepend",
   "publisher": "MohsenAfshin",
+  "icon": "images/visualdepend-icon.png",
   "repository": "https://github.com/mafshin/visualdepend",
   "displayName": "VisualDepend",
   "description": "Visualize your project dependencies",
