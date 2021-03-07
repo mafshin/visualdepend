@@ -1,8 +1,10 @@
 {
   "name": "visualdepend",
+  "publisher": "MohsenAfshin",
+  "repository": "https://github.com/mafshin/visualdepend",
   "displayName": "VisualDepend",
   "description": "Visualize your project dependencies",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.53.0"
   },
