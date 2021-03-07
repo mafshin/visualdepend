@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<style>
+    .node {
+        stroke: rgb(0, 0, 0);
+        stroke-width: 1.5px;
+        font-size:48px;
+    }
+
+    .link {
+        stroke: #999;
+        stroke-opacity: .6;
+    }
+
+    
+text {
+  font-family: sans-serif;
+  font-size: 48px;
+}
+</style>
+
+<script>
+    // // set the dimensions and margins of the graph
+    // var margin = {
+    //         top: 10,
+    //         right: 30,
+    //         bottom: 30,
+    //         left: 40
+    //     },
+    //     width = 400 - margin.left - margin.right,
+    //     height = 400 - margin.top - margin.bottom;
+
+    // // append the svg object to the body of the page
+    // var svg = d3.select("#my_dataviz")
+    //     .append("svg")
+    //     .attr("width", width + margin.left + margin.right)
+    //     .attr("height", height + margin.top + margin.bottom)
+    //     .append("g")
+    //     .attr("transform",
+    //         "translate(" + margin.left + "," + margin.top + ")");
+
+    var data = {
+        nodes: [{
+            id: 1
+        }, {
+            id: 2
+        }, {
+            id: 3
+        }, {
+            id: 4
+        }, {
+            id: 5
+        }],
+        links: [{
+                source: 1,
+                target: 2
+            }, {
+                source: 3,
+                target: 1
+            },
+            {
+                source: 1,
+                target: 4
+            }
+        ]
+    };
+    // Initialize the links
+
+    data = {
+        nodes: [{
+            name: "A",
+            x: 200,
+            y: 150
+        }, {
+            name: "B",
+            x: 140,
+            y: 300
+        }, {
+            name: "C",
+            x: 300,
+            y: 300
+        }, {
+            name: "D",
+            x: 300,
+            y: 180
+        }],
+        links: [{
+            source: 0,
+            target: 1
+        }, {
+            source: 1,
+            target: 2
+        }, {
+            source: 2,
+            target: 3
+        }, ]
+    };
+
+    var data = {
+        "nodes": [{
+            "name": "Equinox.UI.Web",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.UI.Web\\Equinox.UI.Web.csproj",
+            "id": 1,
+            "x": 300,
+            "y": 400
+        }, {
+            "name": "Equinox.Services.Api",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.Services.Api\\Equinox.Services.Api.csproj",
+            "id": 2,
+            "x": 300,
+            "y": 400
+        }, {
+            "name": "Equinox.Domain",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.Domain\\Equinox.Domain.csproj",
+            "id": 3,
+            "x": 300,
+            "y": 400
+        }, {
+            "name": "Equinox.Application",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.Application\\Equinox.Application.csproj",
+            "id": 4,
+            "x": 300,
+            "y": 400
+        }, {
+            "name": "Equinox.Domain.Core",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.Domain.Core\\Equinox.Domain.Core.csproj",
+            "id": 5,
+            "x": 300,
+            "y": 400
+        }, {
+            "name": "Equinox.Infra.Data",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.Infra.Data\\Equinox.Infra.Data.csproj",
+            "id": 6,
+            "x": 300,
+            "y": 400
+        }, {
+            "name": "Equinox.Infra.CrossCutting.Bus",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.Infra.CrossCutting.Bus\\Equinox.Infra.CrossCutting.Bus.csproj",
+            "id": 7,
+            "x": 300,
+            "y": 400
+        }, {
+            "name": "Equinox.Infra.CrossCutting.Identity",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.Infra.CrossCutting.Identity\\Equinox.Infra.CrossCutting.Identity.csproj",
+            "id": 8,
+            "x": 300,
+            "y": 400
+        }, {
+            "name": "Equinox.Infra.CrossCutting.IoC",
+            "path": "c:\\Projects\\EquinoxProject\\src\\Equinox.Infra.CrossCutting.IoC\\Equinox.Infra.CrossCutting.IoC.csproj",
+            "id": 9,
+            "x": 300,
+            "y": 400
+        }],
+        "links": [{
+            "source": 1,
+            "target": 4
+        }, {
+            "source": 1,
+            "target": 8
+        }, {
+            "source": 1,
+            "target": 9
+        }, {
+            "source": 2,
+            "target": 4
+        }, {
+            "source": 2,
+            "target": 7
+        }, {
+            "source": 2,
+            "target": 8
+        }, {
+            "source": 2,
+            "target": 9
+        }, {
+            "source": 3,
+            "target": 5
+        }, {
+            "source": 3,
+            "target": 7
+        }, {
+            "source": 4,
+            "target": 3
+        }, {
+            "source": 4,
+            "target": 6
+        }, {
+            "source": 6,
+            "target": 3
+        }, {
+            "source": 6,
+            "target": 8
+        }, {
+            "source": 7,
+            "target": 5
+        }, {
+            "source": 8,
+            "target": 3
+        }, {
+            "source": 9,
+            "target": 4
+        }, {
+            "source": 9,
+            "target": 3
+        }, {
+            "source": 9,
+            "target": 8
+        }, {
+            "source": 9,
+            "target": 6
+        }]
+    };
+    var c10 = d3.scale.category10();
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", 1200)
+        .attr("height", 800);
+
+    var drag = d3.behavior.drag()
+        .on("drag", function (d, i) {
+            d.x += d3.event.dx
+            d.y += d3.event.dy
+            d3.select(this).attr("x", d.x).attr("y", d.y);
+            links.each(function (l, li) {
+                if (l.source == i) {
+                    d3.select(this).attr("x1", d.x).attr("y1", d.y);
+                } else if (l.target == i) {
+                    d3.select(this).attr("x2", d.x).attr("y2", d.y);
+                }
+            });
+        });
+
+    var links = svg.selectAll("link")
+        .data(data.links)
+        .enter()
+        .append("line")
+        .attr("class", "link")
+        .attr("x1", function (l) {
+            var sourceNode = data.nodes.filter(function (d, i) {
+                return d.id == l.source
+            })[0];
+            d3.select(this).attr("y1", sourceNode.y);
+            return sourceNode.x
+        })
+        .attr("x2", function (l) {
+            var targetNode = data.nodes.filter(function (d, i) {
+                return d.id == l.target
+            })[0];
+            d3.select(this).attr("y2", targetNode.y);
+            return targetNode.x
+        })
+        .attr("fill", "none")
+        .attr("stroke", "white");
+    
+    var node = svg.append("g")
+    .attr("class","node")
+    .selectAll("g")
+    .data(data.nodes)
+    .enter()
+    .append("g");
+
+    var circles = node
+        .append("rect")
+        .attr("class", "node")
+        .attr("x", function (d) {
+            return d.x
+        })
+        .attr("y", function (d) {
+            return d.y
+        })
+        .attr('width', 50)
+        .attr('height', 30)
+        .attr("fill", function (d, i) {
+            return c10(i);
+        })
+        .call(drag);
+
+        var labels = node.append("text")
+        .text(function(d) {
+            return d.id;
+        })
+        .style("fill", 'green')
+        .attr('x', function(d) { return d.x  - 5 })
+        .attr('y', function(d) { return d.y - 5 });
+</script>
